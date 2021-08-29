@@ -1,13 +1,14 @@
 import React from 'react';
 import styled from 'styled-components/macro';
 
-import { QUERIES, WEIGHTS } from '../../constants';
+import { QUERIES } from '../../constants';
 import Logo from '../Logo';
 import Icon from '../Icon';
 import UnstyledButton from '../UnstyledButton';
 import SuperHeader from '../SuperHeader';
 import MobileMenu from '../MobileMenu';
 import VisuallyHidden from '../VisuallyHidden';
+import NavLink from '../NavLink';
 
 const Header = () => {
   const [showMobileMenu, setShowMobileMenu] = React.useState(false);
@@ -111,18 +112,6 @@ const Filler = styled.div`
 
   @media ${QUERIES.tabletAndSmaller} {
     display: none;
-  }
-`;
-
-const NavLink = styled.a`
-  font-size: 1.125rem;
-  text-transform: uppercase;
-  text-decoration: none;
-  color: var(--color-gray-900);
-  font-weight: ${WEIGHTS.medium};
-
-  &:first-of-type {
-    color: var(--color-secondary);
   }
 `;
 
