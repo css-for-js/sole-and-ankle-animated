@@ -47,7 +47,7 @@ When hovering over the navigation links on desktop, they should "flip up", revea
 
 In order to accomplish this challenge, **you'll need to tweak the JSX.** There's no way to solve this problem in CSS alone. In particular, you'll need to duplicate the text inside each navigation link.
 
-You may wish to create a new `NavLink` component, though it isn't required.
+The relevant component is `Header.js`. You may wish to create a new `NavLink` component, though it isn't required.
 
 ### Stretch Goal
 
@@ -72,6 +72,8 @@ This effect consists of 3 individual animations:
 For bonus points, use a custom easing curve on the slide-in animation. You can configure one using this tool: https://cubic-bezier.com.
 
 Don't worry about the exit animation; exit animations are difficult in React, and require a library like [React transition group](https://reactcommunity.org/react-transition-group/).
+
+The relevant component is `MobileMenu.js`.
 
 ### Stretch Goal
 
