@@ -52,6 +52,15 @@ const Header = () => {
   );
 };
 
+const NavLink = ({ children, href }) => (
+  <StyledNavLink href={href}>
+    <NavLinkTextWrapper>
+      {children}
+      <BoldNavLinkText aria-hidden>{children}</BoldNavLinkText>
+    </NavLinkTextWrapper>
+  </StyledNavLink>
+);
+
 const MainHeader = styled.div`
   display: flex;
   align-items: baseline;
@@ -114,7 +123,18 @@ const Filler = styled.div`
   }
 `;
 
-const NavLink = styled.a`
+const NavLinkTextWrapper = styled.div`
+  position: relative;
+`;
+
+const BoldNavLinkText = styled.span`
+  position: absolute;
+  left: 0;
+  transform: translateY(100%);
+  font-weight: ${WEIGHTS.bold};
+`;
+
+const StyledNavLink = styled.a`
   font-size: 1.125rem;
   text-transform: uppercase;
   text-decoration: none;
@@ -123,6 +143,22 @@ const NavLink = styled.a`
 
   &:first-of-type {
     color: var(--color-secondary);
+  }
+
+  overflow: hidden;
+
+  @media (prefers-reduced-motion: no-preference) {
+     ${NavLinkTextWrapper} {
+        transition: transform 400ms;
+        will-change: tranform;
+    }
+
+    &:hover {
+      ${NavLinkTextWrapper} {
+        transform: translateY(-100%);
+        transition-duration 200ms;
+      }
+    } 
   }
 `;
 
