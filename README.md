@@ -35,7 +35,6 @@ Here are some ideas:
 
 - In addition to the photo zoom, tweak the new/sale flags in some way.
 - Use a CSS filter on the photo.
-- Use a 3D transform on the entire ShoeCard component, rotating in 3D space.
 
 ---
 
