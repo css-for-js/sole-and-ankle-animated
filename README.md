@@ -10,6 +10,12 @@ In this workshop, we're going to use our newly-acquired animation skills to brea
 
 Also, **don't forget about accessibility.** Significant motion should be disabled by default, and only enabled based on the `prefers-reduced-motion` media query.
 
+## Troubleshooting
+
+If you run into problems running a local development server, check out our [Troubleshooting Guide](https://courses.joshwcomeau.com/troubleshooting) on the course platform.
+
+This guide addresses the common `Digital Envelope Routine` error you may have seen.
+
 ---
 
 ## Exercise 1: Sneaker Zoom
