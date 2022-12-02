@@ -77,6 +77,15 @@ const Wrapper = styled.article``;
 
 const ImageWrapper = styled.div`
   position: relative;
+
+  @media(prefers-reduced-motion: no-preference) {
+    transition: transform 100ms ease;
+    &:hover {
+      transform: scale(1.05);
+      transition: transform 250ms ease;
+      // transform-origin: bottom center;
+    }
+  }
 `;
 
 const Image = styled.img`
