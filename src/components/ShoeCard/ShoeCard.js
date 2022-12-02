@@ -36,11 +36,11 @@ const ShoeCard = ({
       <Wrapper>
         <ImageWrapper>
           <Image alt="" src={imageSrc} />
-          {variant === 'on-sale' && <SaleFlag>Sale</SaleFlag>}
-          {variant === 'new-release' && (
-            <NewFlag>Just released!</NewFlag>
-          )}
         </ImageWrapper>
+        {variant === 'on-sale' && <SaleFlag>Sale</SaleFlag>}
+        {variant === 'new-release' && (
+          <NewFlag>Just released!</NewFlag>
+        )}
         <Spacer size={12} />
         <Row>
           <Name>{name}</Name>
@@ -73,24 +73,35 @@ const Link = styled.a`
   color: inherit;
 `;
 
-const Wrapper = styled.article``;
+const Wrapper = styled.article`
+  position: relative;
+`;
 
 const ImageWrapper = styled.div`
-  position: relative;
-
-  @media(prefers-reduced-motion: no-preference) {
-    transition: transform 100ms ease;
-    &:hover {
-      transform: scale(1.05);
-      transition: transform 250ms ease;
-      // transform-origin: bottom center;
-    }
-  }
+  border-radius: 16px 16px 4px 4px;
+  /*
+    This is the key: when the image spills over the
+    bounding rectangle of this element, the parts that overflow
+    are clamped
+  */
+  overflow: hidden;
 `;
 
 const Image = styled.img`
+  display: block;
   width: 100%;
-  border-radius: 16px 16px 4px 4px;
+
+  transition: transform 600ms;
+  transform-origin: 50% 75%;
+  will-change: transform;
+
+  @media(prefers-reduced-motion: no-preference) and (hover: hover) {
+    ${Link}:hover &,
+    ${Link}:focus & {
+      transform: scale(1.1);
+      transition: transform 250ms;
+    }
+  }
 `;
 
 const Row = styled.div`
