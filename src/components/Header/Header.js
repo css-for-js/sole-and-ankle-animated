@@ -20,7 +20,10 @@ const Header = () => {
           <Logo />
         </LogoWrapper>
         <DesktopNav>
-          <NavLink href="/sale">Sale</NavLink>
+          <NavLink href="/sale">
+            Sale
+            <Revealed>Sale</Revealed>
+          </NavLink>
           <NavLink href="/new">New&nbsp;Releases</NavLink>
           <NavLink href="/men">Men</NavLink>
           <NavLink href="/women">Women</NavLink>
@@ -114,16 +117,34 @@ const Filler = styled.div`
   }
 `;
 
+const Revealed = styled.span`
+  font-weight: ${WEIGHTS.bold};
+  top: -500px;
+  position: absolute;
+`;
+
 const NavLink = styled.a`
   font-size: 1.125rem;
   text-transform: uppercase;
   text-decoration: none;
   color: var(--color-gray-900);
+  display: flex;
+  flex-direction: column;
+  position: relative;
   font-weight: ${WEIGHTS.medium};
+
+  &:hover ${Revealed} {
+    @media(prefers-reduced-motion: no-preference) and (hover: hover) {
+      transform: translateY(500px);
+      transition: transform 250ms;
+    }
+  }
 
   &:first-of-type {
     color: var(--color-secondary);
   }
 `;
+
+
 
 export default Header;
