@@ -1,13 +1,14 @@
 import React from 'react';
 import styled from 'styled-components/macro';
 
-import { QUERIES, WEIGHTS } from '../../constants';
+import { QUERIES } from '../../constants';
 import Logo from '../Logo';
 import Icon from '../Icon';
 import UnstyledButton from '../UnstyledButton';
 import SuperHeader from '../SuperHeader';
 import MobileMenu from '../MobileMenu';
 import VisuallyHidden from '../VisuallyHidden';
+import NavLink from '../NavLink';
 
 const Header = () => {
   const [showMobileMenu, setShowMobileMenu] = React.useState(false);
@@ -20,10 +21,7 @@ const Header = () => {
           <Logo />
         </LogoWrapper>
         <DesktopNav>
-          <NavLink href="/sale">
-            Sale
-            <Revealed>Sale</Revealed>
-          </NavLink>
+          <NavLink href="/sale">Sale</NavLink>
           <NavLink href="/new">New&nbsp;Releases</NavLink>
           <NavLink href="/men">Men</NavLink>
           <NavLink href="/women">Women</NavLink>
@@ -114,34 +112,6 @@ const Filler = styled.div`
 
   @media ${QUERIES.tabletAndSmaller} {
     display: none;
-  }
-`;
-
-const Revealed = styled.span`
-  font-weight: ${WEIGHTS.bold};
-  top: -500px;
-  position: absolute;
-`;
-
-const NavLink = styled.a`
-  font-size: 1.125rem;
-  text-transform: uppercase;
-  text-decoration: none;
-  color: var(--color-gray-900);
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  font-weight: ${WEIGHTS.medium};
-
-  &:hover ${Revealed} {
-    @media(prefers-reduced-motion: no-preference) and (hover: hover) {
-      transform: translateY(500px);
-      transition: transform 250ms;
-    }
-  }
-
-  &:first-of-type {
-    color: var(--color-secondary);
   }
 `;
 
