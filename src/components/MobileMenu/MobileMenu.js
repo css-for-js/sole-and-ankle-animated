@@ -46,6 +46,15 @@ const appear = keyframes`
   }
 `;
 
+const slideIn = keyframes`
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0%);
+  }
+`;
+
 const Wrapper = styled(DialogOverlay)`
   position: fixed;
   top: 0;
@@ -68,19 +77,23 @@ const Backdrop = styled.div`
 `;
 
 const Content = styled(DialogContent)`
+  --overfill: 16px;
   isolation: isolate;
   background: white;
-  width: 300px;
+  width: calc(300px + var(--overfill));
   height: 100%;
   padding: 24px 32px;
+  margin-right: calc(var(--overfill) * -1);
   display: flex;
   flex-direction: column;
+  animation: ${slideIn} 400ms both cubic-bezier(.32,1.19,.85,1.04);
+  animation-delay: 200ms;
 `;
 
 const CloseButton = styled(UnstyledButton)`
   position: absolute;
   top: 10px;
-  right: 0;
+  right: var(--overfill);
   padding: 16px;
 `;
 
