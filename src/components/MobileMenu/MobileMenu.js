@@ -86,15 +86,18 @@ const Content = styled(DialogContent)`
   height: 100%;
   padding: 24px 32px;
   margin-right: calc(var(--overfill) * -1);
-  animation: ${slideIn} 400ms both cubic-bezier(.32,1.19,.85,1.04);
-  animation-delay: 200ms;
+  @media(prefers-reduced-motion: no-preference) {
+    animation: ${slideIn} 400ms both cubic-bezier(.32,1.19,.85,1.04);
+    animation-delay: 200ms;
+  }
 `;
 
 const ContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
   height: 100%;
-  animation: ${appear} 1000ms ease-in;
+  animation: ${appear} 500ms ease-in both;
+  animation-delay: 400ms;
 `;
 
 const CloseButton = styled(UnstyledButton)`
