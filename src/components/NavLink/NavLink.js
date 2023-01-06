@@ -30,18 +30,21 @@ const Wrapper = styled.a`
 
 const Text = styled.span`
   display: block;
-`;
 
-const MainText = styled(Text)`
-  transform: translateY(0%);
+  transform: translateY(var(--translate-from));
   transition: transform 500ms;
 
   ${Wrapper}:hover & {
     @media(prefers-reduced-motion: no-preference) and (hover: hover) {
-      transform: translateY(-100%);
+      transform: translateY(var(--translate-to));
       transition: transform 250ms;
     }
   }
+`;
+
+const MainText = styled(Text)`
+  --translate-from: 0%;
+  --translate-to: -100%;
 `;
 
 const HoverText = styled(Text)`
@@ -52,15 +55,8 @@ const HoverText = styled(Text)`
   width: 100%;
   height: 100%;
 
-  transform: translateY(100%);
-  transition: transform 500ms;
-
-  ${Wrapper}:hover & {
-    @media(prefers-reduced-motion: no-preference) and (hover: hover) {
-      transform: translateY(0%);
-      transition: transform 250ms;
-    }
-  }
+  --translate-from: 100%;
+  --translate-to: 0%:
 `;
 
 
