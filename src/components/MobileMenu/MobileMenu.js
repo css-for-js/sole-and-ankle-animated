@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
-import styled from 'styled-components/macro';
+import styled, { keyframes } from 'styled-components/macro';
 import { DialogOverlay, DialogContent } from '@reach/dialog';
 
 import { QUERIES, WEIGHTS } from '../../constants';
@@ -11,7 +11,8 @@ import VisuallyHidden from '../VisuallyHidden';
 
 const MobileMenu = ({ isOpen, onDismiss }) => {
   return (
-    <Overlay isOpen={isOpen} onDismiss={onDismiss}>
+    <Wrapper isOpen={isOpen} onDismiss={onDismiss}>
+      <Backdrop />
       <Content aria-label="Menu">
         <CloseButton onClick={onDismiss}>
           <Icon id="close" />
@@ -32,22 +33,42 @@ const MobileMenu = ({ isOpen, onDismiss }) => {
           <SubLink href="/contact">Contact Us</SubLink>
         </Footer>
       </Content>
-    </Overlay>
+    </Wrapper>
   );
 };
 
-const Overlay = styled(DialogOverlay)`
+const appear = keyframes`
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+`;
+
+const Wrapper = styled(DialogOverlay)`
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: var(--color-backdrop);
+  background: transparent;
   display: flex;
   justify-content: flex-end;
 `;
 
+const Backdrop = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: var(--color-backdrop);
+  animation: ${appear} 500ms;
+`;
+
 const Content = styled(DialogContent)`
+  isolation: isolate;
   background: white;
   width: 300px;
   height: 100%;
