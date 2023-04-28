@@ -27,7 +27,7 @@ const VisuallyHidden = ({ children, ...delegated }) => {
   }, []);
 
   if (forceShow) {
-    return children;
+    return {children};
   }
 
   return <Wrapper {...delegated}>{children}</Wrapper>;
